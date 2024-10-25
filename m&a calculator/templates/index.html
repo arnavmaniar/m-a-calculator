@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&A Balance Sheet Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Mergers & Acquisitions Balance Sheet Tool</h1>
+</header>
+
+<div class="container">
+    <form action="{{ url_for('calculate') }}" method="POST">
+        <h2>Acquirer Balance Sheet</h2>
+        <div class="form-group">
+            <label for="acquirer_cash">Cash:</label>
+            <input type="number" id="acquirer_cash" name="acquirer_cash" required>
+        </div>
+        <div class="form-group">
+            <label for="acquirer_ar">Accounts Receivable:</label>
+            <input type="number" id="acquirer_ar" name="acquirer_ar" required>
+        </div>
+        <div class="form-group">
+            <label for="acquirer_inventory">Inventory:</label>
+            <input type="number" id="acquirer_inventory" name="acquirer_inventory" required>
+        </div>
+        <div class="form-group">
+            <label for="acquirer_ppe">Property, Plant, & Equipment (PP&E):</label>
+            <input type="number" id="acquirer_ppe" name="acquirer_ppe" required>
+        </div>
+        <div class="form-group">
+            <label for="acquirer_liabilities">Total Liabilities:</label>
+            <input type="number" id="acquirer_liabilities" name="acquirer_liabilities" required>
+        </div>
+        <div class="form-group">
+            <label for="acquirer_equity">Total Equity:</label>
+            <input type="number" id="acquirer_equity" name="acquirer_equity" required>
+        </div>
+
+        <h2>Target Balance Sheet</h2>
+        <div class="form-group">
+            <label for="target_cash">Cash:</label>
+            <input type="number" id="target_cash" name="target_cash" required>
+        </div>
+        <div class="form-group">
+            <label for="target_ar">Accounts Receivable:</label>
+            <input type="number" id="target_ar" name="target_ar" required>
+        </div>
+        <div class="form-group">
+            <label for="target_inventory">Inventory:</label>
+            <input type="number" id="target_inventory" name="target_inventory" required>
+        </div>
+        <div class="form-group">
+            <label for="target_ppe">Property, Plant, & Equipment (PP&E):</label>
+            <input type="number" id="target_ppe" name="target_ppe" required>
+        </div>
+        <div class="form-group">
+            <label for="target_liabilities">Total Liabilities:</label>
+            <input type="number" id="target_liabilities" name="target_liabilities" required>
+        </div>
+        <div class="form-group">
+            <label for="target_equity">Total Equity:</label>
+            <input type="number" id="target_equity" name="target_equity" required>
+        </div>
+
+        <h2>M&A Specific Inputs</h2>
+        <div class="form-group">
+            <label for="target_price_per_share">Target Price per Share:</label>
+            <input type="number" id="target_price_per_share" name="target_price_per_share" required>
+        </div>
+        <div class="form-group">
+            <label for="target_shares_outstanding">Target Shares Outstanding:</label>
+            <input type="number" id="target_shares_outstanding" name="target_shares_outstanding" required>
+        </div>
+        <div class="form-group">
+            <label for="equity_consideration_percent">Equity Consideration (%):</label>
+            <input type="number" id="equity_consideration_percent" name="equity_consideration_percent" required>
+        </div>
+        <div class="form-group">
+            <label for="cash_consideration_percent">Cash Consideration (%):</label>
+            <input type="number" id="cash_consideration_percent" name="cash_consideration_percent" required>
+        </div>
+        <div class="form-group">
+            <label for="target_ppe_fair_value">Target PP&E Fair Value:</label>
+            <input type="number" id="target_ppe_fair_value" name="target_ppe_fair_value" required>
+        </div>
+        <div class="form-group">
+            <label for="target_intangible_assets_fair_value">Target Intangible Assets Fair Value:</label>
+            <input type="number" id="target_intangible_assets_fair_value" name="target_intangible_assets_fair_value" required>
+        </div>
+        <div class="form-group">
+            <label for="target_long_term_debt_fee">Target Long-Term Debt Fee:</label>
+            <input type="number" id="target_long_term_debt_fee" name="target_long_term_debt_fee" required>
+        </div>
+        <div class="form-group">
+            <label for="target_long_term_debt_amount">Target Long-Term Debt Amount:</label>
+            <input type="number" id="target_long_term_debt_amount" name="target_long_term_debt_amount" required>
+        </div>
+
+        <button type="submit">Calculate</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Calculation Results</h1>
+    </header>
+    <section class="results-section">
+        <p>Total Assets: {{ results.total_assets }}</p>
+        <p>Total Liabilities: {{ results.total_liabilities }}</p>
+        <p>Total Equity: {{ results.equity }}</p>
+    </section>
+    <a href="/" class="back-btn">Back to Home</a>
+</body>
+</html>
